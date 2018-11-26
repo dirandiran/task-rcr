@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"/>
+<body>
+<div th:fragment="DocumentList">
+    <table class="table table-bordered table-hover horizontal-align">
+        <thead>
+        <tr>
+            <th style="width: 10%">Id</th>
+            <th class="dropdown" style="width: 10%">Время печати(сек.)
+                <a th:href="@{'/sort/{sortType}' (sortType = 'ASC')}"><i class="fa fa-chevron-circle-up"></i></a>
+                <a th:href="@{'/sort/{sortType}' (sortType = 'DESC')}"><i class="fa fa-chevron-circle-down"></i></a>
+                <!--<button id="asc" name="asc" type="button" value="asc"><i class="fa fa-chevron-circle-up"></i></button>-->
+                <!--<button id="desc" name="desc" type="button" value="desc"><i class="fa fa-chevron-circle-down"></i></button>-->
+            </th>
+            <th style="width: 20%">Тип документа</th>
+            <th style="width: 20%">Размер бумаги</th>
+            <!--<th style="width: 5%">Push doc</th>-->
+            <!--<th style="width: 5%">Edit</th>-->
+            <th style="width: 5%">Delete</th>
+            <th style="width: 5%">Process</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="doc : ${documents}">
+            <td th:text="${doc.id}" style="text-align: center">#</td>
+            <td style="text-align: center" th:text="${doc.timeprint}"></td>
+            <td style="text-align: center" th:text="${doc.typedocument}"></td>
+            <td style="text-align: center" th:text="${doc.formatpage}"></td>
+            <!--<td style="text-align: center"><a th:href="@{'/push/{id}'(id=${doc.id})}"><i class="fa fa-plus-square-o" aria-hidden="true" style="font-size:20px"></i></a></td>-->
+            <!--<td style="text-align: center"><a th:href="@{'/edit/{id}'(id=${doc.id})}"><i class="fa fa-edit" style="font-size:20px"></i></a></td>-->
+            <td style="text-align: center"><a th:href="@{'/delete/{id}'(id=${doc.id})}"><i class="fa fa-trash" style="font-size:20px"></i></a></td>
+           <!-- <div id = "printing" style="display:none">-->
+            <td>
+                <!--<img src='https://thumbs.gfycat.com/ThankfulFoolhardyDorado-size_restricted.gif' name = "printing"/>-->
+                <!--<img src='https://thumbs.gfycat.com/ThankfulFoolhardyDorado-size_restricted.gif' name="done" style="display:none"/>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <form th:action="@{/show}" method="post">
+        <button class="navbar-button" type="submit" name="show" id="show">Show result</button>
+    </form>
+    <form th:action="@{/stop}" method="post">
+        <button class="navbar-button" type="submit" name="stop" id="stop">Stop printing</button>
+    </form>
+</div>
+</body>
+</html>

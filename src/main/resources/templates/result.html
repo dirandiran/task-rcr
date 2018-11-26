@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"/>
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(documents)}">
+        <div th:replace="operations/listRes :: DocumentList"></div>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+</body>
+</html>

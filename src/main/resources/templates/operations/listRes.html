@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"/>
+<body>
+<div th:fragment="DocumentList">
+    Напечатанные документы:
+    <table class="table table-bordered table-hover horizontal-align">
+        <thead>
+        <tr>
+            <th style="width: 10%">Id</th>
+            <th class="dropdown" style="width: 10%">Время печати(сек.)</th>
+            <th style="width: 20%">Тип документа</th>
+            <th style="width: 20%">Размер бумаги</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="doc : ${documents}">
+            <td th:text="${doc.id}" style="text-align: center">#</td>
+            <td style="text-align: center" th:text="${doc.timeprint}"></td>
+            <td style="text-align: center" th:text="${doc.typedocument}"></td>
+            <td style="text-align: center" th:text="${doc.formatpage}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        Общее время печати:
+         <input type="text" th:value = "${printtime}" size="10"/>
+    </div>
+</div>
+</body>
+</html>

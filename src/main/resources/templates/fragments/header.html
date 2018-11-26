@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="eng"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
+    <nav class="navbar-default navbar-fixed-top">
+        <div class="container">
+            <button class="navbar-button" type="button" name="start" id="start">Start printing documents</button>
+        </div>
+        <div class="container">
+        <button class="navbar-button" type="submit" name="add" id="add">Add doc</button>
+        <form th:action="@{/push}" method="post">
+            <input type="text" id="timeprint" th:name="timeprint" placeholder="время печати(в секундах)" style="display:none"/>
+            <input type="text" id="typedoc" th:name="typedoc" placeholder="тип документа" style="display:none"/>
+            <input type="text" id="formatpage" th:name="formatpage" placeholder="размер бумаги" style="display:none"/>
+            <button class="navbar-button" type="submit" name="push" id="push" style="display:none">Добавить</button>
+        </form>
+        </div>
+    </nav>
+</div>
+</html>
